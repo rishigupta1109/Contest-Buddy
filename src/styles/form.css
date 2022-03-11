@@ -1,0 +1,12 @@
+.form{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding :20px;
+}
+#saveBtn{
+    margin: 12px 0px;
+}
