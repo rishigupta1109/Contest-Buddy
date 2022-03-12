@@ -89,15 +89,15 @@ const DetailsPage = ({User,setUser}) => {
                 {userloading ? <CircularIndeterminate/> :
                     <div className="row borderYellow se">
                <div className="column">
-                    <img src={userData[0].titlePhoto} alt="image" />
+                    <img src={userData[0].titlePhoto} id="pic" alt="image" />
                 </div>
                 <div className="column">
-                    <div>handle: {userData[0].handle}</div>  
-                    <div>rank: {userData[0].rank}</div>  
-                    <div>rating: {userData[0].rating}</div>  
+                    <div>handle: <b style={{color:"yellow"}}>{userData[0].handle}</b></div>  
+                    <div>rank: <b style={{color:"yellow"}}>{userData[0].rank}</b></div>  
+                    <div>rating: <b style={{color:"yellow"}}>{userData[0].rating}</b></div>  
                     <br />
-                    <div>maxRank: {userData[0].maxRank}</div>  
-                    <div>maxRating: {userData[0].maxRating}</div>  
+                    <div>maxRank: <b style={{color:"yellow"}}>{userData[0].maxRank}</b></div>  
+                    <div>maxRating:<b style={{color:"yellow"}}>{userData[0].maxRating}</b> </div>  
                 </div>
                 </div>}
             </div>

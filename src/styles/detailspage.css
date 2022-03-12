@@ -53,3 +53,21 @@ img{
 .se{
     justify-content: space-evenly;
 }
+#pic{
+    height: 250px;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+}
+@media (max-width:600px) {
+    #pic{
+        height:150px;
+        border-radius: 150px;
+        -webkit-border-radius: 150px;
+        -moz-border-radius: 150px;
+        -ms-border-radius: 150px;
+        -o-border-radius: 150px;
+}
+}
