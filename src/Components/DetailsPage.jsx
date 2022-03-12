@@ -14,33 +14,52 @@ const DetailsPage = ({User,setUser}) => {
     const [usercontestloading, setcontestLoading] = useState(true);
     const fetchdata = async () => {
         setuserLoading(true);
-        const url = `https://codeforces.com/api/user.info?handles=${User}`;
-        const data = await fetch(url);
+
         try{
-        let result=data.json().then(value => {
-            setuserData(value.result);
-            setuserLoading(false);
-            if (value.result === undefined) {
+        const url = `https://codeforces.com/api/user.info?handles=${User}`;
+            const data = await fetch(url);
+            console.log(data);
+            if (data.status === 200) {
+                let result=data.json().then(value => {
+                    setuserData(value.result);
+                    setuserLoading(false);
+                    if (value.result === undefined) {
+                        setUser(null);
+                        localStorage.removeItem("user");
+                        alert("User doesn`t exist");
+                    }
+                }).catch(err => {
+                    setUser(null);
+                        localStorage.removeItem("user");
+                        alert("connect to internet");
+                })
+            }
+            else {
                 setUser(null);
-                localStorage.removeItem("user");
+                        localStorage.removeItem("user");
                 alert("User doesn`t exist");
             }
-        }).catch(err => {
+            }
+        catch (err) {
             setUser(null);
+                alert("connect to internet")
                 localStorage.removeItem("user");
-                alert("User doesn`t exist");
-            })}
-            catch(err){
             console.error(err);
-            }
+        }
+        
         
     }
     const fetchContests = async () => {
         setcontestLoading(true);
-        const url = `https://codeforces.com/api/contest.list`;
-        const data = await fetch(url);
-        data.json().then(value => { setContests(value.result.filter((a) => { return a.phase === "BEFORE"; }).reverse());
-        setcontestLoading(false)})
+        try {
+            const url = `https://codeforces.com/api/contest.list`;
+            const data = await fetch(url);
+            data.json().then(value => { setContests(value.result.filter((a) => { return a.phase === "BEFORE"; }).reverse());
+            setcontestLoading(false)})
+        }
+        catch(err){
+            console.log(err);
+        }
     }
     const UTCsectoDate = (sec) => {
         let date = new Date(0);

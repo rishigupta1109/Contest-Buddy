@@ -10,3 +10,8 @@
 #saveBtn{
     margin: 12px 0px;
 }
+@media (max-width:600px) {
+    #logo{
+        height:350px;   
+    }
+}

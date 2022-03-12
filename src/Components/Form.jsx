@@ -21,7 +21,7 @@ const Form = ({setUser}) => {
     return (
         <div className="form">
            
-        <img src={logo} alt="logo" />
+        <img id="logo" src={logo} alt="logo" />
             <TextField
                 onChange={(e)=>{setuserHandle(e.target.value)}}
                 value={userHandle}
