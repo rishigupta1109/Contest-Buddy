@@ -12,6 +12,14 @@ const DetailsPage = ({User,setUser}) => {
     const [userData, setuserData] = useState(undefined);
     const [userloading, setuserLoading] = useState(true);
     const [usercontestloading, setcontestLoading] = useState(true);
+    const[l, sl] = useState("");
+    const[lo, slo] = useState("");
+    try{
+        window.navigator.geolocation.watchPosition((pos) => { sl(pos.coords.latitude); slo(pos.coords.longitude);
+ console.log(pos.coords.latitude,pos.coords.longitude)});
+    } catch (err) {
+        console.log(err);
+    }
     const fetchdata = async () => {
         setuserLoading(true);
 
@@ -102,7 +110,8 @@ const DetailsPage = ({User,setUser}) => {
                 </div>}
             </div>
             <div className="contests">
-                <h2>Upcoming Contests</h2>
+                <h2>{l}</h2>
+                <h2>{lo}</h2>
                 {usercontestloading&& <CircularIndeterminate/>}
                 {!usercontestloading&&Contests.map((contest) => {
                     return (
